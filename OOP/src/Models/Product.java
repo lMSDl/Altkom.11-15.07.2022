@@ -1,6 +1,6 @@
 package Models;
 
-public class Product {
+public class Product /*extends Object*/ {
     private String name;
     private float price;
     String sku;

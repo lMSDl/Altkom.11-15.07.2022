@@ -8,8 +8,9 @@ public class WallClock extends Clock {
         //var hourClockHand = new ClockHand();
         //var minuteClockHand = new ClockHand();
         //var secondClockHand = new ClockHand();
-        super(new ClockHand(), new ClockHand(), new ClockHand());
-        this.hanger = new Hanger();
+        //super(new ClockHand(), new ClockHand(), new ClockHand());
+        //this.hanger = new Hanger();
+        this(new ClockHand(), new ClockHand(), new ClockHand(), new Hanger());
     }
 
     public WallClock(ClockHand hourClockHand, ClockHand minuteClockHand, ClockHand secondClockHand, Hanger hanger ) {
