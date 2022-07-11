@@ -1,6 +1,6 @@
 package Models;
 
-public class Clock {
+public class Clock extends Product {
 
     private ClockHand hourClockHand;
     private ClockHand minuteClockHand;

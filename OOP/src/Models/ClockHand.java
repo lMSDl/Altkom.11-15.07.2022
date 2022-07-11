@@ -1,14 +1,5 @@
 package Models;
 
-public class ClockHand {
+public class ClockHand extends Product {
 
-    private String type;
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 }
