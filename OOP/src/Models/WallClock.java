@@ -22,4 +22,7 @@ public class WallClock extends Clock {
         return hanger.getPrice() + super.getPrice();
     }
 
+    public String toString(){
+        return getInfo() + " (" + super.toString() + ")";
+    }
 }

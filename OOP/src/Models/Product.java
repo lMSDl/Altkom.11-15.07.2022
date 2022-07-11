@@ -1,5 +1,7 @@
 package Models;
 
+import java.util.Objects;
+
 public class Product /*extends Object*/ {
     private String name;
     private float price;
@@ -23,4 +25,16 @@ public class Product /*extends Object*/ {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Float.compare(product.price, price) == 0 && Objects.equals(name, product.name) && Objects.equals(sku, product.sku);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, sku);
+    }
 }

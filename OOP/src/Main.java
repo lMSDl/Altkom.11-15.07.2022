@@ -40,7 +40,7 @@ public class Main {
         var products = new Product[] { product1, product2, clock, clockHand3};
         var order = new Order(products);
 
-        System.out.printf("Suma zamówienia: %.2f", order.getPrice());
+        System.out.printf("Suma zamówienia: %.2f\n", order.getPrice());
 
         var product3 = (Product)clock;
         order.addProduct(product1);
@@ -54,6 +54,8 @@ public class Main {
 
         a = (int)b;
         b = a;
+
+        System.out.println(clock);
     }
 
     /*static void addToPrice(Product product, float value) {
