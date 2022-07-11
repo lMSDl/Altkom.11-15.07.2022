@@ -1,7 +1,4 @@
-import Models.ClockHand;
-import Models.Hanger;
-import Models.Product;
-import Models.WallClock;
+import Models.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,6 +33,9 @@ public class Main {
         clock.setName("Zegar ścienny");
 
         System.out.println(clock.getInfo());
+
+        Clock clock2 = clock;
+        System.out.println(clock2.getInfo());
 
     }
 
