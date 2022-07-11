@@ -43,10 +43,10 @@ public class Main {
         System.out.printf("Suma zamówienia: %.2f\n", order.getPrice());
 
         var product3 = (Product)clock;
-        order.addProduct(product1);
-        order.addProduct(clock);
-        order.addClock(clock);
-        order.addClock((Clock)product3);
+        order.add(product1);
+        order.add(clock);
+        //order.add(clock);
+        order.add((Clock)product3);
         //order.addClock((Clock)product1);
 
         int a = 15;
