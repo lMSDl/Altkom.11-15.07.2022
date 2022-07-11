@@ -3,8 +3,8 @@ package Models;
 public class Product {
     private String name;
     private float price;
-
-    public String getName() {
+    String sku;
+    protected String getName() {
         return name;
     }
     public void setName(String name) {

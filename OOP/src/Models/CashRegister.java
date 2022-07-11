@@ -2,7 +2,7 @@ package Models;
 
 public class CashRegister {
 
-    public void AddProduct(Product product) {
-
+    public void ReadSku(Product product) {
+        System.out.println(product.sku);
     }
 }
