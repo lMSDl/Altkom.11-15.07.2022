@@ -42,6 +42,18 @@ public class Main {
 
         System.out.printf("Suma zamówienia: %.2f", order.getPrice());
 
+        var product3 = (Product)clock;
+        order.addProduct(product1);
+        order.addProduct(clock);
+        order.addClock(clock);
+        order.addClock((Clock)product3);
+        //order.addClock((Clock)product1);
+
+        int a = 15;
+        long b = 1231231231222222231L;
+
+        a = (int)b;
+        b = a;
     }
 
     /*static void addToPrice(Product product, float value) {

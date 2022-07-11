@@ -1,6 +1,6 @@
 package Models;
 
-public class Clock extends Product {
+public class Clock extends CraftedProduct {
 
     private ClockHand hourClockHand;
     private ClockHand minuteClockHand;

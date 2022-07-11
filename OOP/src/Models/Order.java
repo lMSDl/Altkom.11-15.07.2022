@@ -22,4 +22,12 @@ public class Order {
         return  sum;
     }
 
+    public void addProduct(Product product) {
+
+    }
+
+    public void addClock(Clock clock) {
+
+    }
+
 }

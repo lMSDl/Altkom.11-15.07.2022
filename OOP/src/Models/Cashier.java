@@ -9,6 +9,11 @@ public class Cashier {
 
     public void Checkout(Product product) {
         cashRegister.ReadSku(product);
+        if(product instanceof CraftedProduct) {
+            /*var craftedProduct = (CraftedProduct) product;
+            craftedProduct.removeSafety();*/
+            ((CraftedProduct)product).removeSafety();
+        }
     }
 
 }
