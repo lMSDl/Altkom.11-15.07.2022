@@ -37,6 +37,11 @@ public class Main {
         Clock clock2 = clock;
         System.out.println(clock2.getInfo());
 
+        var products = new Product[] { product1, product2, clock, clockHand3};
+        var order = new Order(products);
+
+        System.out.printf("Suma zamówienia: %.2f", order.getPrice());
+
     }
 
     /*static void addToPrice(Product product, float value) {
