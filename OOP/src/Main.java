@@ -33,7 +33,7 @@ public class Main {
 
         System.out.println(clock.getInfo());
 
-        Clock clock2 = clock;
+        AnalogClock clock2 = clock;
         System.out.println(clock2.getInfo());
 
         var products = new Product[] { product1, product2, clock, clockHand3};
@@ -45,8 +45,8 @@ public class Main {
         order.add(product1);
         order.add(clock);
         //order.add(clock);
-        order.add((Clock)product3);
-        //order.addClock((Clock)product1);
+        order.add((AnalogClock)product3);
+        //order.addClock((AnalogClock)product1);
 
         int a = 15;
         long b = 1231231231222222231L;
@@ -55,6 +55,7 @@ public class Main {
         b = a;
 
         System.out.println(clock);
+
     }
 
     /*static void addToPrice(Product product, float value) {

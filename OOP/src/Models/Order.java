@@ -1,7 +1,5 @@
 package Models;
 
-import java.security.PublicKey;
-
 public class Order {
 
     private Product[] products;
@@ -26,7 +24,7 @@ public class Order {
 
     }
 
-    public void add(Clock clock) {
+    public void add(AnalogClock clock) {
 
     }
 

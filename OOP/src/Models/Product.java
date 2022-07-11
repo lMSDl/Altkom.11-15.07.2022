@@ -2,7 +2,7 @@ package Models;
 
 import java.util.Objects;
 
-public class Product /*extends Object*/ {
+public class Product extends  Entity {
     public final float MIN_PRICE = 0.01f;
 
     private final String name;

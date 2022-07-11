@@ -1,6 +1,6 @@
 package Models;
 
-public class Color {
+public class Color extends Entity {
 
     private String colorCode;
 

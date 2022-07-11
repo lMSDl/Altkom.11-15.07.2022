@@ -1,6 +1,6 @@
 package Models;
 
-public class WallClock extends Clock {
+public class WallClock extends AnalogClock {
 
     private Hanger hanger;
 
@@ -25,4 +25,5 @@ public class WallClock extends Clock {
     public String toString(){
         return getInfo() + " (" + super.toString() + ")";
     }
+
 }
