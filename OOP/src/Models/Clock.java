@@ -11,4 +11,8 @@ public class Clock extends Product {
         this.minuteClockHand = minuteClockHand;
         this.secondClockHand = secondClockHand;
     }
+
+    public float getPrice() {
+        return super.getPrice() + hourClockHand.getPrice() + minuteClockHand.getPrice() + secondClockHand.getPrice();
+    }
 }

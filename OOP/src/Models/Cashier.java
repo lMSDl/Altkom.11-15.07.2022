@@ -8,7 +8,7 @@ public class Cashier {
     }
 
     public void Checkout(Product product) {
-        cashRegister.AddProduct(product);
+        cashRegister.ReadSku(product);
     }
 
 }
