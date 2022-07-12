@@ -1,4 +1,8 @@
+import Exceptions.A;
+import Exceptions.PathException;
 import Models.*;
+
+import java.nio.file.Path;
 
 public class Main {
 
@@ -59,6 +63,17 @@ public class Main {
 
         System.out.println(clock);
 
+
+        var classA = new A();
+        try {
+            classA.Test(3);
+        }
+        catch (PathException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /*static void addToPrice(Product product, float value) {
