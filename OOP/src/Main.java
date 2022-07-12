@@ -1,14 +1,37 @@
 import Exceptions.A;
 import Exceptions.PathException;
+import InnerClasses.OuterClass;
+import Interfaces.CashRegisterService;
 import Models.*;
-
-import java.nio.file.Path;
 
 public class Main {
 
     @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
 
+        var outer = new OuterClass(50);
+        OuterClass.MemberClass inner = outer.new MemberClass();
+
+        var product1 = new Product("Kubek");
+        product1.addToPrice(32.99f);
+
+        int value = 10;
+
+        outer.someMethod(new CashRegisterService() {
+            @Override
+            public void readSku(Product product) {
+                outer.calculate(1, 2, 3);
+                product1.addToPrice(10);
+                System.out.println("No Access to SKU");
+
+                System.out.println(value);
+            }
+        }, product1);
+
+        System.out.println(new OuterClass.StaticInnerClass().test());
+    }
+
+    private static void part1() {
         var product1 = new Product("Kubek");
         //product1.name = "Kubek";
         //product1.price = 32.99f;
