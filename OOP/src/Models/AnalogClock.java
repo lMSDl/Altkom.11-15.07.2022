@@ -13,11 +13,13 @@ public /*abstract*/ class AnalogClock extends Clock {
         this.secondClockHand = secondClockHand;
     }
 
+    @Override
     public float getPrice() {
         //hourClockHand.addToPrice(123f);
         return super.getPrice() + hourClockHand.getPrice() + minuteClockHand.getPrice() + secondClockHand.getPrice();
     }
 
+    @Deprecated
     public int getTime() {
         //tak wiem - bez sensu
         return hourClockHand.getPosition() + minuteClockHand.getPosition() + secondClockHand.getPosition();

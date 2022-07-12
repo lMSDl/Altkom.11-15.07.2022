@@ -11,4 +11,5 @@ public class Color extends Entity {
     public String getColorCode() {
         return colorCode;
     }
+
 }

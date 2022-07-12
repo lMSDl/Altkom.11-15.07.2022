@@ -1,6 +1,8 @@
 import Models.*;
 
 public class Main {
+
+    @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
 
         var product1 = new Product("Kubek");
@@ -35,6 +37,7 @@ public class Main {
 
         AnalogClock clock2 = clock;
         System.out.println(clock2.getInfo());
+        System.out.println(clock2.getTime());
 
         var products = new Product[] { product1, product2, clock, clockHand3};
         var order = new Order(products);
