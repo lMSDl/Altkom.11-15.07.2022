@@ -1,5 +1,10 @@
 package Models;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.Date;
 import java.util.Objects;
 
 public class Product extends  Entity {
@@ -7,10 +12,13 @@ public class Product extends  Entity {
 
     private final String name;
     private float price;
+    private LocalDateTime createdAt;
+    private LocalDate expirationDate;
     String sku;
 
     public Product(String name) {
         this.name = name.toUpperCase();
+        createdAt = LocalDateTime.now();
     }
     protected String getName() {
         return name;
@@ -30,6 +38,22 @@ public class Product extends  Entity {
     }
 
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public  void showTimeToExpire() {
+        System.out.println(Period.between(LocalDate.now(), expirationDate).toTotalMonths());
+        //Duration.ofDays(15).toMinutes();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

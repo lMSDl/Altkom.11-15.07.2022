@@ -17,6 +17,9 @@ public class Main {
         product1.addToPrice(10);
         System.out.println(product1.getInfo());
 
+        product1.setExpirationDate(product1.getCreatedAt().plusDays(360).toLocalDate());
+        product1.showTimeToExpire();
+
         var product2 = new Product("pIŁkA");
         //product2.name = "Piłka";
         //product2.price = 19.50f;
