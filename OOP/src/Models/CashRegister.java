@@ -1,8 +1,11 @@
 package Models;
 
-public class CashRegister {
+import Interfaces.CashRegisterService;
 
-    public void ReadSku(Product product) {
+public class CashRegister implements CashRegisterService {
+
+    @Override
+    public void readSku(Product product) {
         System.out.println(product.sku);
     }
 }

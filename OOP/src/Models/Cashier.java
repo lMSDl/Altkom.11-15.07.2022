@@ -1,14 +1,16 @@
 package Models;
 
-public class Cashier {
-    private CashRegister cashRegister;
+import Interfaces.CashRegisterService;
 
-    public void setCashRegister(CashRegister cashRegister) {
+public class Cashier {
+    private CashRegisterService cashRegister;
+
+    public void setCashRegister(CashRegisterService cashRegister) {
         this.cashRegister = cashRegister;
     }
 
     public void Checkout(Product product) {
-        cashRegister.ReadSku(product);
+        cashRegister.readSku(product);
         if(product instanceof CraftedProduct) {
             /*var craftedProduct = (CraftedProduct) product;
             craftedProduct.removeSafety();*/
