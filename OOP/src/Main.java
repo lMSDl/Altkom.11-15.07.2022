@@ -1,3 +1,7 @@
+import DesignPatterns.Decorator.ConsoleWorker;
+import DesignPatterns.Decorator.CountWorkerDecorator;
+import DesignPatterns.Decorator.HashWorkerDecorator;
+import DesignPatterns.Decorator.Worker;
 import Exceptions.A;
 import Exceptions.PathException;
 import InnerClasses.OuterClass;
@@ -40,6 +44,12 @@ public class Main {
             e.printStackTrace();
         }
 
+        Worker worker = new ConsoleWorker();
+        worker = new HashWorkerDecorator(worker);
+        worker = new CountWorkerDecorator(worker);
+        worker = new HashWorkerDecorator(worker);
+
+        worker.work("some data");
     }
 
     private static void fileOperation(Product product1) throws IOException {
