@@ -4,6 +4,10 @@ import InnerClasses.OuterClass;
 import Interfaces.CashRegisterService;
 import Models.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Main {
 
     @SuppressWarnings({"deprecation"})
@@ -29,6 +33,26 @@ public class Main {
         }, product1);
 
         System.out.println(new OuterClass.StaticInnerClass().test());
+
+        try {
+            fileOperation(product1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void fileOperation(Product product1) throws IOException {
+        var file = new File("product.txt");
+        var append = file.exists();
+        //var fileWriter = new FileWriter(file, append);
+        try (var fileWriter = new FileWriter(file, append)) {
+            fileWriter.write(product1.getInfo());
+            //fileWriter.flush();
+        }
+        //finally {
+        //    fileWriter.close();
+        //}
     }
 
     private static void part1() {
