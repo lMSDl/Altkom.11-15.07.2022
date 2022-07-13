@@ -8,9 +8,11 @@ import InnerClasses.OuterClass;
 import Interfaces.CashRegisterService;
 import Models.*;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.beans.XMLEncoder;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -44,12 +46,30 @@ public class Main {
             e.printStackTrace();
         }
 
+        var beans = new BeansObject();
+        //beans.setName("Beans");
+        beans.setValue(2);
+        try {
+            serialize(beans);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Worker worker = new ConsoleWorker();
         worker = new HashWorkerDecorator(worker);
         worker = new CountWorkerDecorator(worker);
         worker = new HashWorkerDecorator(worker);
 
         worker.work("some data");
+    }
+
+    private static void serialize(Serializable serializable) throws IOException {
+        try (var encoder = new XMLEncoder(
+                new BufferedOutputStream(
+                        new FileOutputStream("item.xml")))) {
+            encoder.writeObject(serializable);
+        } catch (FileNotFoundException e) {
+        }
     }
 
     private static void fileOperation(Product product1) throws IOException {

@@ -24,4 +24,4 @@ public class HashWorkerDecorator extends WorkerDecorator //implements Worker
         System.out.println(input.hashCode());
     }
 }
-}
+
