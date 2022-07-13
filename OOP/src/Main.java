@@ -1,3 +1,4 @@
+import DesignPatterns.Builder.VehicleBuilder;
 import DesignPatterns.Decorator.ConsoleWorker;
 import DesignPatterns.Decorator.CountWorkerDecorator;
 import DesignPatterns.Decorator.HashWorkerDecorator;
@@ -18,7 +19,18 @@ public class Main {
 
     @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
+        var builder = new VehicleBuilder();
 
+        builder.setDoors(4).setSeats(5).setEnginePower(100).setTrunkCapacity(500);
+
+        var vehicle = builder.build();
+        builder.setEnginePower(150);
+        var vehicle2 = builder.build();
+
+        System.out.println(vehicle == vehicle2);
+    }
+
+    private static void part2() {
         var outer = new OuterClass(50);
         OuterClass.MemberClass inner = outer.new MemberClass();
 
