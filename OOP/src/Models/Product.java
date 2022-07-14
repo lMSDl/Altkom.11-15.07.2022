@@ -7,7 +7,7 @@ import java.time.Period;
 import java.util.Date;
 import java.util.Objects;
 
-public class Product extends  Entity {
+public class Product extends  Entity implements Comparable {
     public final float MIN_PRICE = 0.01f;
 
     private final String name;
@@ -20,7 +20,7 @@ public class Product extends  Entity {
         this.name = name.toUpperCase();
         createdAt = LocalDateTime.now();
     }
-    protected String getName() {
+    public String getName() {
         return name;
     }
     public float getPrice() {
@@ -65,5 +65,10 @@ public class Product extends  Entity {
     @Override
     public int hashCode() {
         return Objects.hash(name, price, sku);
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

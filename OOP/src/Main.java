@@ -5,6 +5,9 @@ import DesignPatterns.Decorator.HashWorkerDecorator;
 import DesignPatterns.Decorator.Worker;
 import Exceptions.A;
 import Exceptions.PathException;
+import Generics.Models.Address;
+import Generics.Models.Person;
+import Generics.Services.CrudService;
 import InnerClasses.OuterClass;
 import Interfaces.CashRegisterService;
 import Models.*;
@@ -12,13 +15,75 @@ import Models.*;
 import java.beans.XMLEncoder;
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
+    static class MyClass implements Comparable<MyClass> {
+        private String a;
+        private String b;
+        MyClass(String a, String b) { this.a = a; this.b = b; }
 
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            MyClass myClass = (MyClass) o;
+            return Objects.equals(a, myClass.a) && Objects.equals(b, myClass.b);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(a, b);
+        }
+
+        @Override
+        public String toString() {
+            return a + b;
+        }
+
+        @Override
+        public int compareTo(MyClass o) {
+            var result = a.compareTo(a);
+            if(result == 0)
+                return equals(o) ? 0 : 1;
+            return result;
+        }
+    }
     @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
+
+        Set<MyClass> s = new TreeSet<>();
+        var a = new MyClass("a", "b");
+        s.add(a);
+        var b = new MyClass("a", "c");
+        s.add(b);
+        s.add(new MyClass("a", "b"));
+        System.out.println(a.equals(b));
+        for (MyClass m : s) { System.out.println(m); }
+
+    }
+
+    private static void part4() {
+        List<?> list1;
+        list1 = new ArrayList<Worker>();
+        var a = list1.get(1);
+
+        List<? extends Product> list2;
+        list2 = new ArrayList<Product>();
+        list2 = new ArrayList<WallClock>();
+        list2 = new ArrayList<ClockHand>();
+        //list2.add(new ClockHand(""));
+        var b = list2.get(1);
+
+        List<? super Product> list3;
+        list3 = new ArrayList<Product>();
+        //list3 = new ArrayList<WallClock>();
+        list3 = new ArrayList<Entity>();
+        list3.add(new Product(""));
+        var c = list3.get(1);
+    }
+
+    private static void part3() {
         var builder = new VehicleBuilder();
 
         builder.setDoors(4).setSeats(5).setEnginePower(100).setTrunkCapacity(500);
@@ -29,6 +94,7 @@ public class Main {
 
         System.out.println(vehicle == vehicle2);
     }
+
 
     private static void part2() {
         var outer = new OuterClass(50);
