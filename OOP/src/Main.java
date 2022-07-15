@@ -51,14 +51,29 @@ public class Main {
     }
     @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
+        System.out.println();
+        Product product;
 
-       Optional<Product> product = Optional.ofNullable(null);
-       // Optional<Product> product = Optional.of(new Product("a"));
+        product = new Product("");
 
-       if(product.isPresent())
-           System.out.println(product.get());
-       product.ifPresent(System.out::println);
-       var a = product.orElse(new Product("b"));
+        System.out.println(product.getDateTime());
+        System.out.println(Product.getStaticDateTime());
+
+        product = new Product("");
+
+        System.out.println(product.getDateTime());
+        System.out.println(Product.getStaticDateTime());
+
+    }
+
+    private static void part7() {
+        Optional<Product> product = Optional.ofNullable(null);
+        // Optional<Product> product = Optional.of(new Product("a"));
+
+        if(product.isPresent())
+            System.out.println(product.get());
+        product.ifPresent(System.out::println);
+        var a = product.orElse(new Product("b"));
 
         var boxes = Stream.generate(Box::new)
                 /*.map(box -> { box.items = Stream.iterate(new Item(1), x -> new Item(x.value + 1) )
@@ -82,7 +97,6 @@ public class Main {
 
         var partition = items.stream().collect(Collectors.partitioningBy(x -> x.value  == 3));
         var group = items.stream().collect(Collectors.groupingBy(x -> x.value));
-
     }
 
     private static void part6() {
