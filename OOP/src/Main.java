@@ -5,22 +5,22 @@ import DesignPatterns.Decorator.HashWorkerDecorator;
 import DesignPatterns.Decorator.Worker;
 import Exceptions.A;
 import Exceptions.PathException;
-import Generics.Models.Address;
-import Generics.Models.Person;
-import Generics.Services.CrudService;
 import InnerClasses.OuterClass;
 import Interfaces.CashRegisterService;
 import Models.*;
 
 import java.beans.XMLEncoder;
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     static class MyClass implements Comparable<MyClass> {
-        private String a;
-        private String b;
+        public String a;
+        public String b;
         MyClass(String a, String b) { this.a = a; this.b = b; }
 
         @Override
@@ -52,6 +52,40 @@ public class Main {
     @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
 
+       Optional<Product> product = Optional.ofNullable(null);
+       // Optional<Product> product = Optional.of(new Product("a"));
+
+       if(product.isPresent())
+           System.out.println(product.get());
+       product.ifPresent(System.out::println);
+       var a = product.orElse(new Product("b"));
+
+        var boxes = Stream.generate(Box::new)
+                /*.map(box -> { box.items = Stream.iterate(new Item(1), x -> new Item(x.value + 1) )
+                                                .limit(5)
+                                                .collect(Collectors.toList());
+                                return box;
+                })*/
+                .peek(box -> box.items = Stream.iterate(new Item(1), x -> new Item(x.value + 1) )
+                                                .limit(5)
+                                                .collect(Collectors.toList()))
+                .limit(5)
+                .collect(Collectors.toList());
+
+        var items = boxes.stream().flatMap(x -> x.items.stream()).toList();
+        var min = items.stream().mapToInt(x -> x.value).min();
+        var average = items.stream().mapToInt(x -> x.value).average();
+        var max = items.stream().mapToInt(x -> x.value).max();
+
+        String[] array = new String[] {"ala", "ma", "kota"};
+        System.out.println(Arrays.stream(array).reduce((s1, s2) -> s1 + " " + s2).get());
+
+        var partition = items.stream().collect(Collectors.partitioningBy(x -> x.value  == 3));
+        var group = items.stream().collect(Collectors.groupingBy(x -> x.value));
+
+    }
+
+    private static void part6() {
         Set<MyClass> s = new TreeSet<>();
         var a = new MyClass("a", "b");
         s.add(a);
@@ -61,6 +95,20 @@ public class Main {
         System.out.println(a.equals(b));
         for (MyClass m : s) { System.out.println(m); }
 
+        b.b = "b";
+        s.forEach(new Consumer<MyClass>() {
+            @Override
+            public void accept(MyClass myClass) {
+                System.out.println(myClass);
+            }
+        });
+
+
+
+        //s.forEach(x -> System.out.println(x));
+        s.forEach(System.out::println);
+        /*for (MyClass m : s)
+        { System.out.println(m); }*/
     }
 
     private static void part4() {
@@ -114,6 +162,14 @@ public class Main {
 
                 System.out.println(value);
             }
+        }, product1);
+
+        outer.someMethod(x -> {
+            outer.calculate(1, 2, 3);
+            product1.addToPrice(10);
+            System.out.println("No Access to SKU");
+
+            System.out.println(value);
         }, product1);
 
         System.out.println(new OuterClass.StaticInnerClass().test());
