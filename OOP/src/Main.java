@@ -51,6 +51,16 @@ public class Main {
     }
     @SuppressWarnings({"deprecation"})
     public static void main(String[] args) {
+
+
+        var stringsBundle = ResourceBundle.getBundle("strings", Locale.GERMANY);
+
+        System.out.println(stringsBundle.getString("name"));
+        Locale.setDefault(new Locale("en", "US"));
+        stringsBundle = ResourceBundle.getBundle("strings");
+        System.out.println(stringsBundle.getString("hello"));
+
+
         System.out.println();
         Product product;
 
@@ -97,6 +107,7 @@ public class Main {
 
         var partition = items.stream().collect(Collectors.partitioningBy(x -> x.value  == 3));
         var group = items.stream().collect(Collectors.groupingBy(x -> x.value));
+
     }
 
     private static void part6() {
